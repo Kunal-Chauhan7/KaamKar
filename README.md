@@ -178,5 +178,5 @@ This project is licensed under the MIT License.
 
 ## 🙋‍♂️ Author
 
-Built by [Kunal Chauhan](https://github.com/yourgithub).  
+Built by [Kunal Chauhan](https://github.com/Kunal-Chauhan7).  
 Learning **Next.js**, **Spring Boot**, and building real-world full-stack applications.
