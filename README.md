@@ -1,36 +1,182 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 DevBoard – A Full-Stack Developer Task Manager
 
-## Getting Started
+DevBoard is a modern full-stack task management app inspired by Trello and Jira. It allows developers to manage tasks, collaborate with teams, and track progress efficiently.
 
-First, run the development server:
+Built with:
+- **Frontend**: [Next.js 14+ (App Router)](https://nextjs.org)
+- **Backend**: [Spring Boot](https://spring.io/projects/spring-boot)
+- **Database**: PostgreSQL
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 📸 Preview
+
+![DevBoard UI Screenshot](./screenshots/dashboard.png) <!-- Add a real screenshot later -->
+
+---
+
+## 🧱 Tech Stack
+
+| Layer      | Tech Used                            |
+|------------|---------------------------------------|
+| Frontend   | Next.js, React, TailwindCSS, TypeScript |
+| Backend    | Spring Boot, Java, Spring Security, JWT |
+| Database   | PostgreSQL, JPA (Hibernate)           |
+| Auth       | JWT Token + Cookie-based auth         |
+| Dev Tools  | Docker, Vercel, Postman, GitHub Actions (optional) |
+
+---
+
+## 🧠 Features
+
+- 🔐 User authentication (JWT)
+- 📦 Create, update, and delete tasks
+- 🗃️ Filter and search tasks
+- 📂 File uploads (task attachments)
+- 🧑‍💻 Admin and user role-based views
+- 🌗 Responsive, accessible UI
+- 🚀 Deployed frontend & backend
+
+---
+
+## 📁 Project Structure
+
+### 🧩 Frontend – `/frontend` (Next.js)
+
+```
+/app
+  /auth
+    login/page.tsx
+    register/page.tsx
+  /dashboard
+    layout.tsx
+    page.tsx
+    /tasks
+      page.tsx
+      [id]/page.tsx
+  /components
+    TaskCard.tsx
+    Header.tsx
+  /lib
+    api.ts
+  layout.tsx
+  globals.css
+.env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🧩 Backend – `/backend` (Spring Boot)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+/com/devboard
+  /controller
+    AuthController.java
+    TaskController.java
+  /service
+    AuthService.java
+    TaskService.java
+  /model
+    User.java
+    Task.java
+  /repository
+    UserRepository.java
+    TaskRepository.java
+  /dto
+    TaskDTO.java
+    LoginRequest.java
+  /security
+    JwtFilter.java
+    SecurityConfig.java
+application.properties
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⚙️ Setup Instructions
 
-To learn more about Next.js, take a look at the following resources:
+### 🔧 Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Node.js 18+
+- Java 17+
+- PostgreSQL
+- (Optional) Docker
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### 🚀 Run the Frontend (Next.js)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Environment:
+  ```
+  NEXT_PUBLIC_API_URL=http://localhost:8080/api
+  ```
+
+---
+
+### 🔧 Run the Backend (Spring Boot)
+
+```bash
+cd backend
+./mvnw spring-boot:run
+```
+
+- PostgreSQL `application.properties` example:
+
+  ```properties
+  spring.datasource.url=jdbc:postgresql://localhost:5432/devboard
+  spring.datasource.username=your_db_user
+  spring.datasource.password=your_db_pass
+
+  spring.jpa.hibernate.ddl-auto=update
+  jwt.secret=my-jwt-secret
+  ```
+
+---
+
+## 🔐 Authentication Flow
+
+- Register/Login on frontend
+- Spring Boot issues JWT token
+- Frontend stores token in cookies
+- Authenticated requests include JWT for protected routes
+
+---
+
+## 🌐 Deployment
+
+- Frontend → [Vercel](https://vercel.com/)
+- Backend → [Render](https://render.com/), Railway, or custom VPS
+- PostgreSQL → Hosted DB (Supabase, Neon, or Render)
+
+---
+
+## ✅ TODOs
+
+- [ ] Pagination & sorting
+- [ ] OAuth2 login (GitHub/Google)
+- [ ] Task comments
+- [ ] Notification system (WebSocket or polling)
+- [ ] Admin dashboard analytics
+
+---
+
+## 🤝 Contributing
+
+Want to help improve DevBoard? Feel free to open issues, suggest features, or fork and contribute!
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🙋‍♂️ Author
+
+Built by [Kunal Chauhan](https://github.com/yourgithub).  
+Learning **Next.js**, **Spring Boot**, and building real-world full-stack applications.
